@@ -79,8 +79,9 @@ func OpenDeviceLiveCapture() {
 		packageSource := gopacket.NewPacketSource(handle, handle.LinkType())
 		fmt.Println(packageSource)
 		for packet := range packageSource.Packets() {
-			fmt.Println("=============")
-			fmt.Println(packet)
+			go func() {
+				fmt.Println(packet)
+			}
 		}
 	}
 }
