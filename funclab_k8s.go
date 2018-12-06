@@ -42,7 +42,7 @@ func main() {
 	// func group
 	go OpenDeviceLiveCapture()
 
-	router.Run(":9180")
+	router.Run(":9100")
 }
 
 // FindDevices find devices
@@ -53,18 +53,24 @@ func FindDevices() []string {
 		log.Println(err)
 	}
 
+	// devicesliceaddr := &deviceslice
 	// fmt.Println("Devices found:")
 	for _, device := range devices {
 		if len(device.Addresses) == 0 {
 			continue
 		}
+		if device.Name == "docker0" || device.Name == "lo" {
+			continue
+		}
 		deviceslice = append(deviceslice, device.Name)
 	}
+	fmt.Println(deviceslice)
 	return deviceslice
 }
 
 // OpenDeviceLiveCapture Capture packet
 func OpenDeviceLiveCapture() {
+	fmt.Println("OpenDeviceLiveCapture Runing...")
 	devslice := FindDevices()
 	for _, device := range devslice {
 		handle, err := pcap.OpenLive(device, snapshotLen, promiscuous, timeout)
@@ -74,8 +80,11 @@ func OpenDeviceLiveCapture() {
 
 		// Use the handle as a packet source to process all packets
 		packageSource := gopacket.NewPacketSource(handle, handle.LinkType())
+		fmt.Println(packageSource)
 		for packet := range packageSource.Packets() {
-			fmt.Println(packet)
+			go func() {
+				fmt.Println(packet)
+			}()
 		}
 	}
 }
