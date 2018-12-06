@@ -52,13 +52,13 @@ func FindDevices() []string {
 		log.Println(err)
 	}
 
-	devicesliceaddr := &deviceslice
+	// devicesliceaddr := &deviceslice
 	// fmt.Println("Devices found:")
 	for _, device := range devices {
 		if len(device.Addresses) == 0 {
 			continue
 		}
-		*deviceslice = append(*devicesliceaddr, device.Name)
+		deviceslice = append(devicesliceaddr, device.Name)
 	}
 	return deviceslice
 }
