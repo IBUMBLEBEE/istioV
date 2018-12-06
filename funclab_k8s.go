@@ -6,10 +6,19 @@ import (
 	"log"
 	"runtime"
 	"strconv"
+	"time"
+
+	"github.com/google/gopacket"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/google/gopacket/pcap"
+)
+
+var (
+	snapshot_len int32         = 1024
+	promiscuous  bool          = false
+	timeout      time.Duration = 30 * time.Second
 )
 
 func main() {
@@ -36,23 +45,42 @@ func main() {
 	router.Run(":9180")
 }
 
-func FindDevices() {
+func FindDevices() []string {
+	deviceslice := []string{}
 	devices, err := pcap.FindAllDevs()
 	if err != nil {
 		log.Println(err)
 	}
 
-	fmt.Println("Devices found:")
+	// fmt.Println("Devices found:")
 	for _, device := range devices {
 		if len(device.Addresses) == 0 {
 			continue
 		}
-		fmt.Println("\n Name", device.Name)
-		fmt.Println("Descripttion: ", device.Description)
-		fmt.Println("Devices address: ", device.Addresses, len(device.Addresses))
-		for _, address := range device.Addresses {
-			fmt.Println("- IP address: ", address.IP)
-			fmt.Println("- Subnet mask: ", address.Netmask)
+		deviceslice = append(deviceslice, device.Name)
+		// fmt.Println("\n Name", device.Name)
+		// fmt.Println("Descripttion: ", device.Description)
+		// fmt.Println("Devices address: ", device.Addresses, len(device.Addresses))
+		// for _, address := range device.Addresses {
+		// 	fmt.Println("- IP address: ", address.IP)
+		// 	fmt.Println("- Subnet mask: ", address.Netmask)
+		// }
+	}
+	return deviceslice
+}
+
+func OpenDeviceLiveCapture() {
+	devslice := FindDevices()
+	for _, device := range devslice {
+		handle, err := pcap.OpenLive(device, snapshot_len, promiscuous, timeout)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		// Use the handle as a packet source to process all packets
+		packageSource := gopacket.NewPacketSource(handle, handle.LinkType())
+		for packet := range packageSource.Packets() {
+			fmt.Println(packet)
 		}
 	}
 }
