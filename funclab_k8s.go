@@ -60,6 +60,7 @@ func FindDevices() []string {
 		}
 		deviceslice = append(deviceslice, device.Name)
 	}
+	fmt.Println(deviceslice)
 	return deviceslice
 }
 
