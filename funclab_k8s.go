@@ -58,7 +58,7 @@ func FindDevices() []string {
 		if len(device.Addresses) == 0 {
 			continue
 		}
-		deviceslice = append(devicesliceaddr, device.Name)
+		deviceslice = append(deviceslice, device.Name)
 	}
 	return deviceslice
 }
