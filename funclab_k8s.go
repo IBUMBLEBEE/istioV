@@ -46,18 +46,19 @@ func main() {
 }
 
 func FindDevices() []string {
-	deviceslice := [10]string{}
+	deviceslice := []string{}
 	devices, err := pcap.FindAllDevs()
 	if err != nil {
 		log.Println(err)
 	}
 
+	devicesliceaddr := &deviceslice
 	// fmt.Println("Devices found:")
 	for _, device := range devices {
 		if len(device.Addresses) == 0 {
 			continue
 		}
-		deviceslice = append(deviceslice, device.Name)
+		*deviceslice = append(*devicesliceaddr, device.Name)
 	}
 	return deviceslice
 }
