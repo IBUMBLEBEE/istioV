@@ -81,7 +81,7 @@ func OpenDeviceLiveCapture() {
 		for packet := range packageSource.Packets() {
 			go func() {
 				fmt.Println(packet)
-			}
+			}()
 		}
 	}
 }
