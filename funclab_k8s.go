@@ -46,7 +46,7 @@ func main() {
 }
 
 func FindDevices() []string {
-	deviceslice := []string{}
+	deviceslice := [10]string{}
 	devices, err := pcap.FindAllDevs()
 	if err != nil {
 		log.Println(err)

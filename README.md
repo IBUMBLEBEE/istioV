@@ -3,7 +3,7 @@
 **Programming language：**
 
 * Golang: 1.10.1      解包工具和前端计算
-* python: 3.6.4       流程控制中心
+* Golang: 1.10.1      流程控制中心
 * rust: 1.24          基于前端的计算
 * webassembly: 1.0.0  基于前端的计算
 
