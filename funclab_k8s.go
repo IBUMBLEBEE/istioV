@@ -6,7 +6,8 @@ import (
 	"log"
 	"runtime"
 	"strconv"
-	"third/gin"
+
+	"github.com/gin-gonic/gin"
 
 	"github.com/google/gopacket/pcap"
 )
