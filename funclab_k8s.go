@@ -42,7 +42,7 @@ func main() {
 	// func group
 	go OpenDeviceLiveCapture()
 
-	router.Run(":9180")
+	router.Run(":9100")
 }
 
 func FindDevices() []string {
