@@ -58,13 +58,6 @@ func FindDevices() []string {
 			continue
 		}
 		deviceslice = append(deviceslice, device.Name)
-		// fmt.Println("\n Name", device.Name)
-		// fmt.Println("Descripttion: ", device.Description)
-		// fmt.Println("Devices address: ", device.Addresses, len(device.Addresses))
-		// for _, address := range device.Addresses {
-		// 	fmt.Println("- IP address: ", address.IP)
-		// 	fmt.Println("- Subnet mask: ", address.Netmask)
-		// }
 	}
 	return deviceslice
 }
