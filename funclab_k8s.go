@@ -44,9 +44,12 @@ func FindDevices() {
 
 	fmt.Println("Devices found:")
 	for _, device := range devices {
+		if len(device.Addresses) == 0 {
+			continue
+		}
 		fmt.Println("\n Name", device.Name)
 		fmt.Println("Descripttion: ", device.Description)
-		fmt.Println("Devices address: ", device.Addresses)
+		fmt.Println("Devices address: ", device.Addresses, len(device.Addresses))
 		for _, address := range device.Addresses {
 			fmt.Println("- IP address: ", address.IP)
 			fmt.Println("- Subnet mask: ", address.Netmask)
