@@ -65,6 +65,7 @@ func FindDevices() []string {
 }
 
 func OpenDeviceLiveCapture() {
+	fmt.Println("OpenDeviceLiveCapture Runing...")
 	devslice := FindDevices()
 	for _, device := range devslice {
 		handle, err := pcap.OpenLive(device, snapshot_len, promiscuous, timeout)
