@@ -1,0 +1,46 @@
+{
+	"ImportPath": "kubernetes-TrafficDash",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/google/gopacket",
+			"Comment": "v1.1.14-107-g60ab61c",
+			"Rev": "60ab61cd59496fcfa4d208b265ba79b1e37c1476"
+		},
+		{
+			"ImportPath": "github.com/google/gopacket/layers",
+			"Comment": "v1.1.14-107-g60ab61c",
+			"Rev": "60ab61cd59496fcfa4d208b265ba79b1e37c1476"
+		},
+		{
+			"ImportPath": "github.com/google/gopacket/pcap",
+			"Comment": "v1.1.14-107-g60ab61c",
+			"Rev": "60ab61cd59496fcfa4d208b265ba79b1e37c1476"
+		},
+		{
+			"ImportPath": "third/gin",
+			"Rev": "2e4bd810466a27df7a541f399da29252d63d8bf3"
+		},
+		{
+			"ImportPath": "third/gin/binding",
+			"Rev": "2e4bd810466a27df7a541f399da29252d63d8bf3"
+		},
+		{
+			"ImportPath": "third/gin/render",
+			"Rev": "2e4bd810466a27df7a541f399da29252d63d8bf3"
+		},
+		{
+			"ImportPath": "third/go-colorable",
+			"Rev": "e9e01442ee69c11e5625627bd147d1db1f0e752f"
+		},
+		{
+			"ImportPath": "third/go-isatty",
+			"Rev": "0df0d0992cb73c37a02d9404f3a4df40d3cb3274"
+		},
+		{
+			"ImportPath": "third/httprouter",
+			"Rev": "6ab31338b6fe01c5b1b14d478333a9285fda638d"
+		}
+	]
+}
