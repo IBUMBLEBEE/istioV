@@ -16,9 +16,9 @@ import (
 )
 
 var (
-	snapshot_len int32         = 1024
-	promiscuous  bool          = false
-	timeout      time.Duration = 30 * time.Second
+	snapshotLen int32 = 1024
+	promiscuous       = false
+	timeout           = 30 * time.Second
 )
 
 func main() {
@@ -45,6 +45,7 @@ func main() {
 	router.Run(":9180")
 }
 
+// FindDevices find devices
 func FindDevices() []string {
 	deviceslice := []string{}
 	devices, err := pcap.FindAllDevs()
@@ -62,10 +63,11 @@ func FindDevices() []string {
 	return deviceslice
 }
 
+// OpenDeviceLiveCapture Capture packet
 func OpenDeviceLiveCapture() {
 	devslice := FindDevices()
 	for _, device := range devslice {
-		handle, err := pcap.OpenLive(device, snapshot_len, promiscuous, timeout)
+		handle, err := pcap.OpenLive(device, snapshotLen, promiscuous, timeout)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -78,6 +80,7 @@ func OpenDeviceLiveCapture() {
 	}
 }
 
+// GetGID get goroutine ID
 func GetGID() uint64 {
 	// fmt.Println("The number of GetGID: ", runtime.NumGoroutine(), GetGID())
 	b := make([]byte, 64)
