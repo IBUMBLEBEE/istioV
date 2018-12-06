@@ -77,6 +77,7 @@ func OpenDeviceLiveCapture() {
 
 		// Use the handle as a packet source to process all packets
 		packageSource := gopacket.NewPacketSource(handle, handle.LinkType())
+		fmt.Println(packageSource)
 		for packet := range packageSource.Packets() {
 			fmt.Println("=============")
 			fmt.Println(packet)
