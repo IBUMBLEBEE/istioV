@@ -70,6 +70,7 @@ func OpenDeviceLiveCapture() {
 	for _, device := range devslice {
 		fmt.Println(device)
 		handle, err := pcap.OpenLive(device, snapshot_len, promiscuous, timeout)
+		fmt.Println(err)
 		if err != nil {
 			log.Fatal(err)
 		}
