@@ -144,7 +144,7 @@ func printPacketInfo(packet gopacket.Packet) {
 	applicationLayer := packet.ApplicationLayer()
 	if applicationLayer != nil {
 		fmt.Println("Application layer/Payload found.")
-		fmt.Printf("%s\n", applicationLayer.Payload())
+		// fmt.Printf("%s\n", applicationLayer.Payload())
 
 		// Search for a string inside the payload
 		if strings.Contains(string(applicationLayer.Payload()), "HTTP") {
@@ -154,7 +154,7 @@ func printPacketInfo(packet gopacket.Packet) {
 
 	// Check for errors
 	if err := packet.ErrorLayer(); err != nil {
-		fmt.Println("Error decoding some part of the packet: ", err)
+		fmt.Println("Error decoding some part of the packet: ")
 	}
 	fmt.Println("========================================================================")
 }
