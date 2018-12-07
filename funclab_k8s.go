@@ -62,6 +62,12 @@ func FindDevices() []string {
 		if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
 			continue
 		}
+		if device.Name == "flannel0" || device.Name == "dummy0" || device.Name == "kube-ipvs0" {
+			continue
+		}
+		if device.Name == "cni0" {
+			continue
+		}
 		deviceslice = append(deviceslice, device.Name)
 	}
 	fmt.Println(deviceslice)
