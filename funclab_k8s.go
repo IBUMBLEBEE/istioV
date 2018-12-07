@@ -59,10 +59,7 @@ func FindDevices() []string {
 	// devicesliceaddr := &deviceslice
 	// fmt.Println("Devices found:")
 	for _, device := range devices {
-		if len(device.Addresses) == 0 {
-			continue
-		}
-		if device.Name == "docker0" || device.Name == "lo" {
+		if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
 			continue
 		}
 		deviceslice = append(deviceslice, device.Name)
@@ -92,7 +89,7 @@ func OpenDeviceLiveCapture() {
 }
 
 func printPacketInfo(packet gopacket.Packet) {
-	fmt.Println("Timestamp: ", time.Now().UnixNano())
+	fmt.Println("TcpTimestamp: ", time.Now().UnixNano())
 	ethernetLayer := packet.Layer(layers.LayerTypeEthernet)
 	if ethernetLayer != nil {
 		fmt.Println("Ethernet layer detected")
