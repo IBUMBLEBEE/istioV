@@ -86,7 +86,7 @@ func OpenDeviceLiveCapture() {
 		fmt.Println(packageSource)
 		for packet := range packageSource.Packets() {
 			printPacketInfo(packet)
-			time.Sleep(5 * time.Second)
+			// time.Sleep(5 * time.Second)
 		}
 	}
 }
