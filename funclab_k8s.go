@@ -92,7 +92,7 @@ func OpenDeviceLiveCapture() {
 }
 
 func printPacketInfo(packet gopacket.Packet) {
-	fmt.Println("Timestamp: ", time.Now().Format("2006-01-02T15:04:05"))
+	fmt.Println("Timestamp: ", time.Now().UnixNano())
 	ethernetLayer := packet.Layer(layers.LayerTypeEthernet)
 	if ethernetLayer != nil {
 		fmt.Println("Ethernet layer detected")
