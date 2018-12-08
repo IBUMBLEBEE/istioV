@@ -1,10 +1,10 @@
 package main
 
 import (
-	"regexp"
 	"bytes"
 	"fmt"
 	"log"
+	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -72,7 +72,7 @@ func FindDevices() []string {
 			continue
 		}
 		// filter veth device
-		if (regexp.Match("veth.*", []byte(device.Name)) {
+		if regexp.Match("veth.*", []byte(device.Name)) {
 			continue
 		}
 		deviceslice = append(deviceslice, device.Name)
@@ -107,7 +107,7 @@ func printPacketInfo(packet gopacket.Packet) {
 	if ethernetLayer != nil {
 		fmt.Println("Ethernet layer detected")
 		ethernetPacket, _ := ethernetLayer.(*layers.Ethernet)
-		fmt.Println("Source MAC: ", ethernetPacket.SrcMAC)
+		fmt.Println("Source MAC: ", ethernetPacket.SrcMAC)
 		fmt.Println("Destination MAC: ", ethernetPacket.DstMAC)
 		fmt.Println("Ethernet type: ", ethernetPacket.EthernetType)
 		fmt.Println()
@@ -170,8 +170,7 @@ func printPacketInfo(packet gopacket.Packet) {
 	fmt.Println("========================================================================")
 }
 
-func Match(pattern string, b []byte) (matched bool, err error)
-
+// func Match(pattern string, b []byte) (matched bool, err error)
 
 // GetGID get goroutine ID
 func GetGID() uint64 {
