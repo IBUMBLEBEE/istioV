@@ -59,8 +59,9 @@ func FindDevices() []string {
 
 	// devicesliceaddr := &deviceslice
 	// fmt.Println("Devices found:")
-	fmt.Println("Device describe: ", devices.Flags)
+	// fmt.Println("Device describe: ", devices.Flags)
 	for _, device := range devices {
+		fmt.Println("Device describe: ", device.Flags, device.Destination)
 		if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
 			continue
 		}
