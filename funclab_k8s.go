@@ -73,7 +73,7 @@ func FindDevices() []string {
 		}
 		// filter veth device
 		dtr, err := regexp.Match("veth.*", []byte(device.Name))
-		fmt.Println(dtr)
+		fmt.Println(dtr, err)
 		// if regexp.Match("veth.*", []byte(device.Name)) {
 		// 	continue
 		// }
