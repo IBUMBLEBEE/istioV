@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"log"
-	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -62,20 +61,24 @@ func FindDevices() []string {
 	// fmt.Println("Device describe: ", devices.Flags)
 	for _, device := range devices {
 		fmt.Println("Device describe: ", device.Flags)
-		if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
-			continue
-		}
-		// filter via network
-		if device.Name == "dummy0" || device.Name == "kube-ipvs0" {
-			continue
-		}
-		// filter cni
-		if device.Name == "cni0" {
-			continue
-		}
-		// filter veth device
-		resultTF, _ := regexp.Match("veth.*", []byte(device.Name))
-		if resultTF {
+		// if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
+		// 	continue
+		// }
+		// // filter via network
+		// if device.Name == "dummy0" || device.Name == "kube-ipvs0" {
+		// 	continue
+		// }
+		// // filter cni
+		// if device.Name == "cni0" {
+		// 	continue
+		// }
+		// // filter veth device
+		// resultTF, _ := regexp.Match("veth.*", []byte(device.Name))
+		// if resultTF {
+		// 	continue
+		// }
+
+		if device.Name != "flannel0" {
 			continue
 		}
 		deviceslice = append(deviceslice, device.Name)
