@@ -70,7 +70,7 @@ func FindDevices() []string {
 			continue
 		}
 		// filter cni
-		if device.Name == "flannel0" || device.Name == "cni0" {
+		if device.Name == "cni0" {
 			continue
 		}
 		// filter veth device
