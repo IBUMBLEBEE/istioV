@@ -150,6 +150,14 @@ func printPacketInfo(packet gopacket.Packet) {
 		fmt.Println()
 	}
 
+	// Let's see if the packet is UDP
+	udpLayer := packet.Layer(layers.LayerTypeUDP)
+	if udpLayer != nil {
+		fmt.Println("UDP layer detected")
+		udp, _ := tcpLayer.(*layers.UDP)
+		fmt.Printf("From port %s to %d\n", udp.SrcPort, udp.DstPort)
+	}
+
 	// Iterate over all layer, printing out each layer type
 	fmt.Println("All packet layers:")
 	for _, layer := range packet.Layers() {
