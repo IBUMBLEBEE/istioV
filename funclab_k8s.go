@@ -61,9 +61,9 @@ func FindDevices() []string {
 	// fmt.Println("Device describe: ", devices.Flags)
 	for _, device := range devices {
 		fmt.Println("Device describe: ", device.Flags)
-		// if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
-		// 	continue
-		// }
+		if len(device.Addresses) == 0 || device.Name == "docker0" || device.Name == "lo" {
+			continue
+		}
 		// // filter via network
 		// if device.Name == "dummy0" || device.Name == "kube-ipvs0" {
 		// 	continue
@@ -78,9 +78,9 @@ func FindDevices() []string {
 		// 	continue
 		// }
 
-		if device.Name != "en0" {
-			continue
-		}
+		// if device.Name != "en0" {
+		// 	continue
+		// }
 
 		// if device.Name != "flannel0" {
 		// 	continue
