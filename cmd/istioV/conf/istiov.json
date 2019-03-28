@@ -1,0 +1,8 @@
+{
+    "listen_addr": ":3083",
+    "f_logger": {
+        "level": 5,
+        "file": "/tmp/istiov.log",
+        "slowlog_threshold": 5000
+    }
+}
